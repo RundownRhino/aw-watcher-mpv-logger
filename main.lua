@@ -1,8 +1,7 @@
 local function parent_dir(str)
     return str:match("(.*)[/\\]")
 end
-
-local script_folder = parent_dir(debug.getinfo(1).source:sub(2))
+local script_folder = parent_dir(debug.getinfo(1).source)
 local log_folder = parent_dir(parent_dir(script_folder)) .. '/' .. 'mpv-history'
 
 local o = {
