@@ -1,7 +1,8 @@
 local function parent_dir(str)
     return str:match("(.*)[/\\]")
 end
-local script_folder = parent_dir(debug.getinfo(1).source)
+-- Depending on mpv version, debug.getinfo(1).source may start with an @:
+local script_folder = parent_dir(debug.getinfo(1).source):gsub("@","")
 local log_folder = parent_dir(parent_dir(script_folder)) .. '/' .. 'mpv-history'
 
 local o = {
